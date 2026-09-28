@@ -1,0 +1,15 @@
+{
+  "budget": 2,
+  "bad_value_code": "E_BAD_VALUE",
+  "not_enough_code": "E_NOT_ENOUGH",
+  "event_error_code": "E_BAD_EVENT",
+  "state": { "window": [], "records": [], "ledger": [], "applied": [] },
+  "events": [
+    { "id": 1, "kind": "push", "value": 4 },
+    { "id": 2, "kind": "push", "value": 9 },
+    { "id": 3, "kind": "push", "value": 6 },
+    { "id": 4, "kind": "push", "value": 6 },
+    { "id": 5, "kind": "push", "value": 1 },
+    { "id": 6, "kind": "trim" }
+  ]
+}
