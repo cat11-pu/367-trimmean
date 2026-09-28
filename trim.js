@@ -1,8 +1,24 @@
-// trim.js：窗口推进与去极值（基线：一律原样返回）
+// trim.js：窗口推进与去极值
 export function heldOf(window, value) {
-  return window;
+  const next = window.slice();
+  next.push(value);
+  if (next.length > 5) {
+    next.shift();
+  }
+  return next;
 }
 
 export function trimOf(values) {
-  return { mean: 0, low: 0, high: 0 };
+  const sorted = values.slice().sort(function (a, b) { return a - b; });
+  if (sorted.length === 0) {
+    return { mean: 0, low: null, high: null };
+  }
+  const low = sorted[0];
+  const high = sorted[sorted.length - 1];
+  const rest = sorted.slice(1, sorted.length - 1);
+  if (rest.length === 0) {
+    return { mean: 0, low: low, high: high };
+  }
+  const sum = rest.reduce(function (acc, item) { return acc + item; }, 0);
+  return { mean: Math.floor(sum / rest.length), low: low, high: high };
 }
